@@ -10,6 +10,8 @@ setup(
     name='kyujipy',
     version='0.1.0',
     description='A Python library to convert Japanese texts from Shinjitai to Kyujitai and vice versa',
+    long_description=readme(),
+    long_description_content_type='text/markdown',
     url='https://github.com/DrTurnon/kyujipy',
     author='Emmanuel Ternon',
     author_email='emmanuel.ternon@outlook.com',
