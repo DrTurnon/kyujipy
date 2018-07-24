@@ -1,3 +1,4 @@
 include README.md
-include kyujipy/kakikae.cson
+include kyujipy/kakikae_simplified.cson
+include kyujipy/kakikae_variants.cson
 include kyujipy/kyujitai.cson
