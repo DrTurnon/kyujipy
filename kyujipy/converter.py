@@ -68,7 +68,7 @@ class KyujitaiConverter(object):
 
         # Determine Kakikae database path
         current_path = os.path.abspath(os.path.dirname(__file__))
-        kakikae_db_path = os.path.join(current_path, 'kakikae.cson')
+        kakikae_db_path = os.path.join(current_path, 'kakikae_simplified.cson')
 
         # Parse Kakikae database
         kakikae_db_file = open(kakikae_db_path, 'r', encoding="utf-8")

@@ -1,14 +1,14 @@
-[
-    # kyujitai.cson: List used to convert Shinjitai to Kyujitai (and vice versa)
-    #
-    # Sources used to make this list:
-    # - Official Jōyō Kanji List released by the Japanese Ministry of Education
-    # - Official Jinmeiyō Kanji List released by the Japanese Ministry of Education
-    # - Unicode Standardized Variants List
-    # - kyujitai.js project from Koki Takahashi (http://hakatashi.github.io/kyujitai.js/)
-    #
-    # Note: 弁 --> 辨/瓣/辯/弁 is not present in this list. It is dealt with in the kakikae.cson list
+# List used to convert Shinjitai to Kyujitai (and vice versa)
+#
+# Sources used to make this list:
+# - Official Jōyō Kanji List released by the Japanese Ministry of Education
+# - Official Jinmeiyō Kanji List released by the Japanese Ministry of Education
+# - Unicode Standardized Variants List
+# - kyujitai.js project from Koki Takahashi (http://hakatashi.github.io/kyujitai.js/)
+#
+# Note: 弁 --> 辨/瓣/辯/弁 is not present in this list. It is dealt with in the kakikae_simplified.cson list
 
+[
     # 常用漢字
     ["亜", "亞"],
     ["悪", "惡"],
