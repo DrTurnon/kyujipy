@@ -136,16 +136,14 @@ class KyujitaiConverter(object):
             input_string = self.kakikae_encode_database[word].join(input_string.split(word))
 
         # convert remaining individual characters
-        for char in self.basic_converter.shinjitai_to_kyujitai_database:
-            input_string = self.basic_converter.shinjitai_to_kyujitai_database[char].join(input_string.split(char))
+        input_string = self.basic_converter.shinjitai_to_kyujitai(input_string)
 
         return input_string
 
     def kyujitai_to_shinjitai(self, input_string):
 
         # convert individual characters first
-        for char in self.basic_converter.kyujitai_to_shinjitai_database:
-            input_string = self.basic_converter.kyujitai_to_shinjitai_database[char].join(input_string.split(char))
+        input_string = self.basic_converter.kyujitai_to_shinjitai(input_string)
 
         # apply douon no kanji ni yoru kakikae
         for word in self.kakikae_decode_database:
