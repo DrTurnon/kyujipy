@@ -32,7 +32,7 @@ In Python shell (or inside Python script):
     >>> from kyujipy import KyujitaiConverter
     
     # Instantiate Shinjitai <-> Kyujitai converter
-    >>> converter = KyujitaiConverter
+    >>> converter = KyujitaiConverter()
     
     # Convert a text from Shinjitai to Kyujitai
     >>> print(converter.shinjitai_to_kyujitai("新字体"))
