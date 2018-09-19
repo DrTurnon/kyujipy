@@ -4,7 +4,7 @@
 
 [kyujipy](https://github.com/DrTurnon/kyujipy) is a  Python library to convert Japanese texts from
 [Shinjitai](https://en.wikipedia.org/wiki/Shinjitai) (新字体) to
-[Kyujitai](https://en.wikipedia.org/wiki/Ky%C5%ABjitai), (舊字體) and vice versa.
+[Kyūjitai](https://en.wikipedia.org/wiki/Ky%C5%ABjitai), (舊字體) and vice versa.
 
 [kyujipy](https://github.com/DrTurnon/kyujipy) is based on the
 [kyujitai.js](https://github.com/hakatashi/kyujitai.js) project, originally authored by
@@ -47,11 +47,11 @@ In Python shell (or inside Python script):
 
 * __shinjitai_to_kyujitai(string)__
 
-Convert a text from Shinjitai (新字体) to Kyujitai (舊字體)
+Convert a text from Shinjitai (新字体) to Kyūjitai (舊字體)
 
 * __kyujitai_to_shinjitai(string)__
 
-Convert a text from Kyujitai (舊字體) to Shinjitai (新字体)
+Convert a text from Kyūjitai (舊字體) to Shinjitai (新字体)
 
 
 ## License
