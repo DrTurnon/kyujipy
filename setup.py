@@ -8,7 +8,7 @@ def readme():
 
 setup(
     name='kyujipy',
-    version='0.4.1',
+    version='0.4.2',
     description='A Python library to convert Japanese texts from Shinjitai to Kyujitai and vice versa',
     long_description=readme(),
     long_description_content_type='text/markdown',
