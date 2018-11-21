@@ -1,8 +1,14 @@
 import cson
 import os
 
-EXCEPTIONS_KYUJITAI = {'缺缺': '欠缺'}
-EXCEPTIONS_SHINJITAI = {'欠欠': '欠缺'}
+EXCEPTIONS_KYUJITAI = {
+    '缺缺': '欠缺',
+    '共倭國': '共和國',
+}
+
+EXCEPTIONS_SHINJITAI = {
+    '欠欠': '欠缺',
+}
 
 class BasicConverter(object):
     """
