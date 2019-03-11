@@ -41,11 +41,11 @@ class BasicConverter(object):
 
         # convert individual characters
         for char in self.shinjitai_to_kyujitai_database:
-            input_string = self.shinjitai_to_kyujitai_database[char].join(input_string.split(char))
+            input_string = input_string.replace(char, self.shinjitai_to_kyujitai_database[char])
 
         # process conversion exceptions
         for word in EXCEPTIONS_KYUJITAI:
-            input_string = EXCEPTIONS_KYUJITAI[word].join(input_string.split(word))
+            input_string = input_string.replace(word, EXCEPTIONS_KYUJITAI[word])
 
         return input_string
 
@@ -53,11 +53,11 @@ class BasicConverter(object):
 
         # convert individual characters
         for char in self.kyujitai_to_shinjitai_database:
-            input_string = self.kyujitai_to_shinjitai_database[char].join(input_string.split(char))
+            input_string = input_string.replace(char, self.kyujitai_to_shinjitai_database[char])
 
         # process conversion exceptions
         for word in EXCEPTIONS_SHINJITAI:
-            input_string = EXCEPTIONS_SHINJITAI[word].join(input_string.split(word))
+            input_string = input_string.replace(word, EXCEPTIONS_SHINJITAI[word])
 
         return input_string
 
@@ -100,7 +100,7 @@ class KyujitaiConverter(object):
             # Decode (Kyujitai to Shinjitai) database keys
             for old_char in entry['old']:
                 for word in entry.get('words'):
-                    word = old_char.join(word.split(new_char))
+                    word = word.replace(new_char, old_char)
                     if word not in self.kakikae_decode_database:
                         self.kakikae_decode_database[word] = word
         # Variants database only used for decoding (Kyujitai to Shinjitai conversion)
@@ -108,7 +108,7 @@ class KyujitaiConverter(object):
             new_char = entry['new']
             for old_char in entry['old']:
                 for word in entry.get('words'):
-                    word = old_char.join(word.split(new_char))
+                    word = word.replace(new_char, old_char)
                     if word not in self.kakikae_decode_database:
                         self.kakikae_decode_database[word] = word
 
@@ -118,28 +118,25 @@ class KyujitaiConverter(object):
             base_old_char = entry['old'][0]
             # Encode (Shinjitai to Kyujitai) database values
             for word in entry.get('words'):
-                self.kakikae_encode_database[word] = base_old_char.join(
-                    self.kakikae_encode_database[word].split(new_char))
+                self.kakikae_encode_database[word] = self.kakikae_encode_database[word].replace(new_char, base_old_char)
             # Decode (Kyujitai to Shinjitai) database values
             for old_char in entry['old']:
                 for word in entry.get('words'):
-                    word = old_char.join(word.split(new_char))
-                    self.kakikae_decode_database[word] = new_char.join(
-                        self.kakikae_decode_database[word].split(old_char))
+                    word = word.replace(new_char, old_char)
+                    self.kakikae_decode_database[word] = self.kakikae_decode_database[word].replace(old_char, new_char)
         # Variants database only used for decoding (Kyujitai to Shinjitai conversion)
         for entry in self.kakikae_database_variants:
             new_char = entry['new']
             for old_char in entry['old']:
                 for word in entry.get('words'):
-                    word = old_char.join(word.split(new_char))
-                    self.kakikae_decode_database[word] = new_char.join(
-                        self.kakikae_decode_database[word].split(old_char))
+                    word = word.replace(new_char, old_char)
+                    self.kakikae_decode_database[word] = self.kakikae_decode_database[word].replace(old_char, new_char)
 
     def shinjitai_to_kyujitai(self, input_string):
 
         # revert douon no kanji ni yoru kakikae
         for word in self.kakikae_encode_database:
-            input_string = self.kakikae_encode_database[word].join(input_string.split(word))
+            input_string = input_string.replace(word, self.kakikae_encode_database[word])
 
         # convert remaining individual characters
         input_string = self.basic_converter.shinjitai_to_kyujitai(input_string)
@@ -153,6 +150,6 @@ class KyujitaiConverter(object):
 
         # apply douon no kanji ni yoru kakikae
         for word in self.kakikae_decode_database:
-            input_string = self.kakikae_decode_database[word].join(input_string.split(word))
+            input_string = input_string.replace(word, self.kakikae_decode_database[word])
 
         return input_string
