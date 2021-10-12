@@ -1,0 +1,28 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Export iOS App JSON",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/kyujipy/export_to_json.py",
+      "args": [
+        "../kyujitai-ios/Kyujitai/data/",
+      ],
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Export Android App JSON",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/kyujipy/export_to_json.py",
+      "args": [
+        "../kyujitai-android/app/src/main/assets/",
+      ],
+      "console": "integratedTerminal"
+    }
+  ]
+}
