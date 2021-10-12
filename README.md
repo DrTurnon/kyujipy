@@ -11,16 +11,9 @@
 [Koki Takahashi](https://github.com/hakatashi).
 
 
-## Installation
-
-### 1. Install via [Pip](http://www.pip-installer.org/):
+## Installation (via [Pip](http://www.pip-installer.org/))
 
     $ pip install kyujipy
-
-### 2. Install from Git:
-
-    $ git clone https://github.com/DrTurnon/kyujipy.git
-    $ python setup.py install
 
 
 ## Usage

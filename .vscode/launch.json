@@ -23,6 +23,6 @@
         "../kyujitai-android/app/src/main/assets/",
       ],
       "console": "integratedTerminal"
-    }
+    },
   ]
 }
