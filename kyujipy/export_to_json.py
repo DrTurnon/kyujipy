@@ -3,7 +3,7 @@ import json
 import os
 import sys
 
-DATA_FILES = ['kyujitai', 'kakikae_simplified', 'kakikae_variants']
+DATA_FILES = ['kyujitai_simplified', 'kyujitai_variants', 'kakikae_simplified', 'kakikae_variants']
 
 
 if __name__ == '__main__':

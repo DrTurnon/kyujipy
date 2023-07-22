@@ -3,7 +3,6 @@ import os
 
 EXCEPTIONS_KYUJITAI = {
     '缺缺': '欠缺',
-    '共倭國': '共和國',
 }
 
 EXCEPTIONS_SHINJITAI = {
@@ -19,22 +18,29 @@ class BasicConverter(object):
 
         # Determine Shinjitai/Kyujitai database path
         current_path = os.path.abspath(os.path.dirname(__file__))
-        kyujitai_db_path = os.path.join(current_path, 'kyujitai.cson')
+        kyujitai_simplified_db_path = os.path.join(current_path, 'kyujitai_simplified.cson')
+        kyujitai_variants_db_path = os.path.join(current_path, 'kyujitai_variants.cson')
 
         # Parse Kyujitai database
-        kyujitai_db_file = open(kyujitai_db_path, 'r', encoding="utf-8")
-        self.kyujitai_data = cson.load(kyujitai_db_file)
-        kyujitai_db_file.close()
+        with open(kyujitai_simplified_db_path, 'r', encoding="utf-8") as kyujitai_simplified_db_file:
+            self.kyujitai_data_simplified = cson.load(kyujitai_simplified_db_file)
+        with open(kyujitai_variants_db_path, 'r', encoding="utf-8") as kyujitai_variants_db_file:
+            self.kyujitai_data_variants = cson.load(kyujitai_variants_db_file)
 
         # Build Shinjitai to Kyujitai conversion databases
         self.shinjitai_to_kyujitai_database = {}
         self.kyujitai_to_shinjitai_database = {}
 
         # create Shinjitai/Kyujitai dictionaries
-        for entry in self.kyujitai_data:
+        for entry in self.kyujitai_data_simplified:
             shinjitai = entry[0]
             kyujitai = entry[1]
             self.shinjitai_to_kyujitai_database[shinjitai] = kyujitai
+            self.kyujitai_to_shinjitai_database[kyujitai] = shinjitai
+
+        for entry in self.kyujitai_data_variants:
+            shinjitai = entry[0]
+            kyujitai = entry[1]
             self.kyujitai_to_shinjitai_database[kyujitai] = shinjitai
 
     def shinjitai_to_kyujitai(self, input_string):

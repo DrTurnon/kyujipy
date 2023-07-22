@@ -1,0 +1,20 @@
+# List used to convert Kyujitai variants to Shinjitai
+#
+# Sources used to make this list:
+# - Official Jōyō Kanji List released by the Japanese Ministry of Education
+# - Official Jinmeiyō Kanji List released by the Japanese Ministry of Education
+# - kyujitai.js project from Koki Takahashi (http://hakatashi.github.io/kyujitai.js/)
+
+[
+    # 常用漢字
+    ["闘", "鬥"],
+    ["闘", "鬪"],
+    ["闘", "鬬"],
+
+    # 人名用漢字
+    ["亘", "亙"],
+    ["凛", "凜"],
+    ["晃", "晄"],
+    ["晋", "晉"],
+    ["萌", "萠"],
+]

@@ -20,7 +20,14 @@ class TestConverter(TestCase):
         self.assertEqual(s, shinjitai_ref)
 
     # Asymmetrical conversion
-    def test_asymmetrical_conversion(self):
+    def test_basic_asymmetrical_conversion(self):
+        kyujitai_ref = "亘、凛、晃、晋、萌"
+        shinjitai = self.converter.kyujitai_to_shinjitai("亙、凜、晄、晉、萠")
+        s = self.converter.shinjitai_to_kyujitai(shinjitai)
+        self.assertEqual(s, kyujitai_ref)
+
+    # Asymmetrical conversion
+    def test_kakikae_asymmetrical_conversion(self):
         kyujitai_ref = "飢餓の障礙は以上です。"
         shinjitai = self.converter.kyujitai_to_shinjitai("饑餓の障礙は已上です。")
         s = self.converter.shinjitai_to_kyujitai(shinjitai)
