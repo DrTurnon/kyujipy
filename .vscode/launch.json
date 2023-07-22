@@ -12,7 +12,12 @@
       "args": [
         "../kyujitai-ios/Kyujitai/data/",
       ],
-      "console": "integratedTerminal"
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "PYTHONPATH": "${cwd}"
+      },
+      "justMyCode": true
     },
     {
       "name": "Export Android App JSON",
@@ -22,7 +27,12 @@
       "args": [
         "../kyujitai-android/app/src/main/assets/",
       ],
-      "console": "integratedTerminal"
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "PYTHONPATH": "${cwd}"
+      },
+      "justMyCode": true
     },
   ]
 }
