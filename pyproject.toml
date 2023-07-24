@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "kyujipy"
-version = "0.6.0b1"
+version = "0.6.0"
 description = "A Python library to convert Japanese texts from Shinjitai to Kyujitai and vice versa"
 authors = ["Emmanuel Ternon <emmanuel.ternon@outlook.com>"]
 license="MIT"

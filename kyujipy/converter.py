@@ -9,6 +9,7 @@ EXCEPTIONS_SHINJITAI = {
     '欠欠': '欠缺',
 }
 
+
 class BasicConverter(object):
     """
     Basic converter, only converting Shinjitai to Kyujitai, and vice versa (WITHOUT kakikae)
