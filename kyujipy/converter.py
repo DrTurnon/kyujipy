@@ -85,59 +85,35 @@ class KyujitaiConverter(object):
         kakikae_variants_db_path = os.path.join(current_path, 'kakikae_variants.cson')
 
         # Parse Kakikae database
-        kakikae_simplified_db_file = open(kakikae_simplified_db_path, 'r', encoding="utf-8")
-        self.kakikae_database_simplified = cson.load(kakikae_simplified_db_file)
-        kakikae_simplified_db_file.close()
-        kakikae_variants_db_file = open(kakikae_variants_db_path, 'r', encoding="utf-8")
-        self.kakikae_database_variants = cson.load(kakikae_variants_db_file)
-        kakikae_variants_db_file.close()
+        with open(kakikae_simplified_db_path, 'r', encoding="utf-8") as kakikae_simplified_db_file:
+            self.kakikae_database_simplified = cson.load(kakikae_simplified_db_file)
+        with open(kakikae_variants_db_path, 'r', encoding="utf-8") as kakikae_variants_db_file:
+            self.kakikae_database_variants = cson.load(kakikae_variants_db_file)
 
         # Build Kakikae conversion databases
         self.kakikae_encode_database = {}
         self.kakikae_decode_database = {}
 
-        # First step: index of all potential words (build database keys)
+        # Simplified database, both used for encoding and decoding
         for entry in self.kakikae_database_simplified:
             new_char = entry['new']
+            base_old_char = entry['old'][0]
             # Encode (Shinjitai to Kyujitai) database keys
             for word in entry.get('words'):
-                # add word if not already in database
-                if word not in self.kakikae_encode_database:
-                    self.kakikae_encode_database[word] = word
+                self.kakikae_encode_database[word] = self.kakikae_encode_database.get(word, word).replace(new_char, base_old_char)
             # Decode (Kyujitai to Shinjitai) database keys
             for old_char in entry['old']:
                 for word in entry.get('words'):
                     word = word.replace(new_char, old_char)
-                    if word not in self.kakikae_decode_database:
-                        self.kakikae_decode_database[word] = word
-        # Variants database only used for decoding (Kyujitai to Shinjitai conversion)
-        for entry in self.kakikae_database_variants:
-            new_char = entry['new']
-            for old_char in entry['old']:
-                for word in entry.get('words'):
-                    word = word.replace(new_char, old_char)
-                    if word not in self.kakikae_decode_database:
-                        self.kakikae_decode_database[word] = word
+                    self.kakikae_decode_database[word] = self.kakikae_decode_database.get(word, word).replace(old_char, new_char)
 
-        # Second step: replace Kakikae characters (build database values)
-        for entry in self.kakikae_database_simplified:
-            new_char = entry['new']
-            base_old_char = entry['old'][0]
-            # Encode (Shinjitai to Kyujitai) database values
-            for word in entry.get('words'):
-                self.kakikae_encode_database[word] = self.kakikae_encode_database[word].replace(new_char, base_old_char)
-            # Decode (Kyujitai to Shinjitai) database values
-            for old_char in entry['old']:
-                for word in entry.get('words'):
-                    word = word.replace(new_char, old_char)
-                    self.kakikae_decode_database[word] = self.kakikae_decode_database[word].replace(old_char, new_char)
-        # Variants database only used for decoding (Kyujitai to Shinjitai conversion)
+        # Variants database, only used for decoding (Kyujitai to Shinjitai conversion)
         for entry in self.kakikae_database_variants:
             new_char = entry['new']
             for old_char in entry['old']:
                 for word in entry.get('words'):
                     word = word.replace(new_char, old_char)
-                    self.kakikae_decode_database[word] = self.kakikae_decode_database[word].replace(old_char, new_char)
+                    self.kakikae_decode_database[word] = self.kakikae_decode_database(word, word).replace(old_char, new_char)
 
     def shinjitai_to_kyujitai(self, input_string):
 
