@@ -27,18 +27,23 @@ class KyujitaiConverter(object):
             )
         return {initial_word: conversion_tree}
 
-    def _shinjitai_to_kyujitai_dict_from_tree(self, conversion_tree, conversion_dict):
-        for word, node in conversion_tree.items():
-            conversion_dict[word] = word
-            for conversion_subtree in node:
+    def _shinjitai_to_kyujitai_dict_from_tree(self, conversion_tree, initial_word):
+        def _extract_words_from_subtree(conversion_node, words_to_convert):
+            for conversion_subtree in conversion_node:
                 if isinstance(conversion_subtree, str):
-                    for key, value in conversion_dict.items():
-                        if key == value:
-                            conversion_dict[key] = conversion_subtree
+                    final_word = conversion_subtree
                 else:
-                    self._shinjitai_to_kyujitai_dict_from_tree(
-                        conversion_subtree, conversion_dict
-                    )
+                    for word, subnode in conversion_subtree.items():
+                        words_to_convert.append(word)
+                        final_word = _extract_words_from_subtree(
+                            subnode, words_to_convert
+                        )
+            return final_word
+
+        words_to_convert = [initial_word]
+        node = conversion_tree[initial_word]
+        final_word = _extract_words_from_subtree(node, words_to_convert)
+        return {word_to_convert: final_word for word_to_convert in words_to_convert}
 
     def _kyujitai_to_shinjitai_dict_from_tree(self, conversion_tree, initial_word):
         def _extract_words_from_subtree(conversion_node):
@@ -106,7 +111,7 @@ class KyujitaiConverter(object):
                     }
                 )
 
-        # Second step, build word dictionary
+        # Second step, build kakikae databases
         for word, word_dict in self.word_dictionary.items():
             # Simplified database, both used for encoding and decoding
             simplified_chars = word_dict.get("simplified")
@@ -121,11 +126,9 @@ class KyujitaiConverter(object):
                     for simplified_char_dict in simplified_chars
                 ]
                 conversion_tree = self._generate_conversion_tree(word, conversions)
-                conversion_dict = {}
-                self._shinjitai_to_kyujitai_dict_from_tree(
-                    conversion_tree, conversion_dict
+                self.kakikae_encode_database.update(
+                    self._shinjitai_to_kyujitai_dict_from_tree(conversion_tree, word)
                 )
-                self.kakikae_encode_database.update(conversion_dict)
 
                 # Decode database (Kyujitai to Shinjitai)
                 conversions = [
