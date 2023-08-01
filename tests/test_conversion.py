@@ -3,7 +3,6 @@ from kyujipy import KyujitaiConverter
 
 
 class TestConverter(TestCase):
-
     def setUp(self):
         self.converter = KyujitaiConverter()
 
@@ -50,9 +49,18 @@ class TestConverter(TestCase):
 
     def test_multiple_kyujitai_to_shinjitai(self):
         shinjitai_ref = "奇弁"
-        s = self.converter.shinjitai_to_kyujitai("奇辯")
+        s = self.converter.kyujitai_to_shinjitai("奇辯")
         self.assertEqual(s, shinjitai_ref)
-        s = self.converter.shinjitai_to_kyujitai("詭弁")
+        s = self.converter.kyujitai_to_shinjitai("詭弁")
         self.assertEqual(s, shinjitai_ref)
         s = self.converter.kyujitai_to_shinjitai("詭辯")
+        self.assertEqual(s, shinjitai_ref)
+
+    def test_long_word_kyujitai_to_shinjitai(self):
+        shinjitai_ref = "意固地"
+        s = self.converter.kyujitai_to_shinjitai("意怙地")
+        self.assertEqual(s, shinjitai_ref)
+        s = self.converter.kyujitai_to_shinjitai("依固地")
+        self.assertEqual(s, shinjitai_ref)
+        s = self.converter.kyujitai_to_shinjitai("依怙地")
         self.assertEqual(s, shinjitai_ref)
