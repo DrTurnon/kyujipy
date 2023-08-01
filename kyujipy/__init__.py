@@ -1,2 +1,2 @@
-from kyujipy.converter import BasicConverter
-from kyujipy.converter import KyujitaiConverter
+from kyujipy.basic_converter import BasicConverter
+from kyujipy.kyujitai_converter import KyujitaiConverter
