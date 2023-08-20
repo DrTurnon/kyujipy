@@ -35,14 +35,14 @@ class KyujitaiConverter(object):
                 else:
                     for word, subnode in conversion_subtree.items():
                         words_to_convert.append(word)
-                        final_word, words_to_convert = _extract_words_from_tree_node(
+                        final_word = _extract_words_from_tree_node(
                             subnode, words_to_convert
                         )
-            return final_word, words_to_convert
+            return final_word
 
-        final_word, words_to_convert = _extract_words_from_tree_node(
-            conversion_tree[initial_word], [initial_word]
-        )
+        words_to_convert = [initial_word]
+        first_node = conversion_tree[initial_word]
+        final_word = _extract_words_from_tree_node(first_node, words_to_convert)
         return {word_to_convert: final_word for word_to_convert in words_to_convert}
 
     def _kyujitai_to_shinjitai_dict_from_tree(self, conversion_tree, initial_word):
