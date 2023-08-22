@@ -17,8 +17,13 @@ class BasicConverter(object):
 
     def __init__(self):
         # Determine Shinjitai/Kyujitai database path
-        kyujitai_simplified_db_path = os.path.join("data", "kyujitai_simplified.cson")
-        kyujitai_variants_db_path = os.path.join("data", "kyujitai_variants.cson")
+        current_path = os.path.abspath(os.path.dirname(__file__))
+        kyujitai_simplified_db_path = os.path.join(
+            current_path, "data", "kyujitai_simplified.cson"
+        )
+        kyujitai_variants_db_path = os.path.join(
+            current_path, "data", "kyujitai_variants.cson"
+        )
 
         # Parse Kyujitai database
         with open(

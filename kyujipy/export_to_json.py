@@ -17,7 +17,8 @@ if __name__ == "__main__":
 
     for data_file in DATA_FILES:
         # Parse database files as CSON
-        input_cson_path = os.path.join("data", data_file + ".cson")
+        current_path = os.path.abspath(os.path.dirname(__file__))
+        input_cson_path = os.path.join(current_path, "data", data_file + ".cson")
 
         with open(input_cson_path, "r", encoding="utf-8") as input_cson_file:
             data = cson.load(input_cson_file)
