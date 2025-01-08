@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "kyujipy"
-version = "0.6.6"
+version = "0.6.7"
 description = "A Python library to convert Japanese texts from Shinjitai to Kyujitai and vice versa"
 authors = ["Emmanuel Ternon <emmanuel.ternon@outlook.com>"]
 license="MIT"
@@ -13,11 +13,13 @@ include = [
 
 [tool.poetry.dependencies]
 python = "^3.11"
+build = "^1.2.2.post1"
 cson = "^0.8"
+twine = "^6.0.1"
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
 nose = "^1.3.7"
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
+requires = ["poetry>=2.0.0"]
 build-backend = "poetry.core.masonry.api"

@@ -1,7 +1,7 @@
 # List used to undo the Kanji transformations caused by the 同音の漢字による書きかえ reform
 #
 # Based on the douon.cson file from the kyujitai.js project from Koki Takahashi
-# (http://hakatashi.github.io/kyujitai.js/)
+# (https://hakatashi.github.io/kyujitai.js/)
 
 [
     {
@@ -78,6 +78,11 @@
         new: "回"
         old: ["蛔"]
         words: ["回虫"]
+    }
+    {
+        new: "回"
+        old: ["恢"]
+        words: ["回復"]
     }
     {
         new: "害"
@@ -247,7 +252,7 @@
     {
         new: "連"
         old: ["聯"]
-        words: ["連係","連合","連盟","連想","連邦","連立","連関","連隊"]
+        words: ["連係","連合","連盟","連想","連邦","連立","連関","連隊","関連"]
     }
     {
         new: "激"
@@ -407,7 +412,7 @@
     {
         new: "死"
         old: ["屍"]
-        words: ["死骸","死斑","死体","検死"]
+        words: ["死骸","死斑","死臭","死体","検死"]
     }
     {
         new: "子"
@@ -570,6 +575,11 @@
         words: ["台頭"]
     }
     {
+        new: "託"
+        old: ["托"]
+        words: ["託生"]
+    }
+    {
         new: "知"
         old: ["智"]
         words: ["知謀","機知","才知","人知"]
@@ -577,7 +587,7 @@
     {
         new: "注"
         old: ["註"]
-        words: ["注解"]
+        words: ["注釈","注解"]
     }
     {
         new: "丁"
@@ -732,7 +742,7 @@
     {
         new: "補"
         old: ["輔"]
-        words: ["補導","補弼"]
+        words: ["補導","補弼","補助"]
     }
     {
         new: "保"
@@ -765,11 +775,6 @@
         words: ["偏傍"]
     }
     {
-        new: "膨"
-        old: ["尨"]
-        words: ["膨大"]
-    }
-    {
         new: "朴"
         old: ["樸"]
         words: ["朴実","簡朴","古朴","質朴"]
@@ -797,7 +802,7 @@
     {
         new: "遊"
         old: ["游"]
-        words: ["遊泳","遊弋","遊動","浮遊"]
+        words: ["遊泳","遊弋","遊動","遊魚","浮遊"]
     }
     {
         new: "世"
@@ -862,7 +867,7 @@
     {
         new: "陵"
         old: ["凌"]
-        words: ["陵駕","陵辱"]
+        words: ["陵駕","陵虐","陵辱"]
     }
     {
         new: "励"
@@ -892,7 +897,7 @@
     {
         new: "湾"
         old: ["弯"]
-        words: ["湾曲"]
+        words: ["湾曲","湾月"]
     }
     {
         new: "順"
