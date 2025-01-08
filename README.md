@@ -51,4 +51,4 @@ Convert a text from Kyūjitai (舊字體) to Shinjitai (新字体)
 
 [kyujipy](https://github.com/DrTurnon/kyujipy) is licensed under the MIT license.
 
-© 2017-2024 [Emmanuel Ternon](https://github.com/DrTurnon)
+© 2017-2025 [Emmanuel Ternon](https://github.com/DrTurnon)

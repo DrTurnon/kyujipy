@@ -1,5 +1,0 @@
-cson==0.8 ; python_version >= "3.11" and python_version < "4.0" \
-    --hash=sha256:163a18fccbb5bd0911d20f0ef5876ce5a08057b05ba212571579578f292ed100 \
-    --hash=sha256:ee8c0166fcd1f51789887197e3e8354ac7befa396fc29706bceb5af25edc9e01
-speg==0.3 ; python_version >= "3.11" and python_version < "4.0" \
-    --hash=sha256:10cbef47e168dfc62f14db575cf1c428037a2b881cee6c3cfceda0439c243e71
